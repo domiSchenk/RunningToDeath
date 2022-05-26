@@ -161,12 +161,17 @@ public class CharacterMovementNew : MonoBehaviour
 
             if (isJumpPressed && _jumpTimeoutDelta <= 0.0f)
             {
-                Debug.Log("jump");
                 // the square root of H * -2 * G = how much velocity needed to reach desired height
                 _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * gravity);
                 animator.SetBool(jumpHash, true);
             }
             canJump = true;
+
+            // jump timeout
+            if (_jumpTimeoutDelta >= 0.0f)
+            {
+                _jumpTimeoutDelta -= Time.deltaTime;
+            }
         }
         else
         {
@@ -227,11 +232,6 @@ public class CharacterMovementNew : MonoBehaviour
 
     private void handleMovement()
     {
-        if (isJumpPressed)
-        {
-            Debug.Log("jump");
-        }
-
         float targetSpeed = isRunPressed ? RunSpeed : WalkSpeed;
 
         if (currentMovementInput == Vector2.zero) { targetSpeed = 0.0f; }
@@ -240,8 +240,6 @@ public class CharacterMovementNew : MonoBehaviour
 
         if (currentMovementInput != Vector2.zero)
         {
-
-
             _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg;
 
             // rotate to face input direction relative to camera position
@@ -255,12 +253,17 @@ public class CharacterMovementNew : MonoBehaviour
         if (_animationBlend < 0.01f) _animationBlend = 0f;
 
         // move the player
-        characterController.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
-                         new Vector3(currentMovementInput.x * targetSpeed, _verticalVelocity, currentMovementInput.y * targetSpeed) * Time.deltaTime);
+        // characterController.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
+        //                  new Vector3(currentMovementInput.x * targetSpeed, _verticalVelocity, currentMovementInput.y * targetSpeed) * Time.deltaTime);
+        var movement = isRunPressed ? currentRunMovement : currentMovement;
+        characterController.Move(movement * Time.deltaTime +
+                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
         animator.SetFloat(speedHash, _animationBlend);
         animator.SetFloat(motionSpeedHash, 1f);
     }
+
+    // GroundCheck
 
     void OnEnable()
     {
