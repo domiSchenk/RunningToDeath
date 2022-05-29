@@ -10,11 +10,9 @@ public class HeroCharacterController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float runSpeed = 13f;
     [SerializeField] private float coyoteTime = 0.2f;
-    [SerializeField] private Transform[] wallChecks;
     [SerializeField] private Transform player;
-
-    private Animator animator;
-    private CharacterController characterController;
+    [SerializeField] private Animator animator;
+    [SerializeField] private CharacterController characterController;
     private Vector3 velocity;
 
 
@@ -41,13 +39,6 @@ public class HeroCharacterController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Debug.Log("Start Player");
-        characterController = GetComponent<CharacterController>();
-        // get animator from child
-        animator = GetComponentInChildren<Animator>();
-        //get player by tag
-        // player = GameObject.FindGameObjectWithTag("Player").transform;
-        // Debug.Log("Player found");
         AssignAnimationIDs();
     }
 
