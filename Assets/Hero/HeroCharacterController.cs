@@ -10,9 +10,8 @@ public class HeroCharacterController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float runSpeed = 13f;
     [SerializeField] private float coyoteTime = 0.2f;
-    [SerializeField] private Transform[] groundChecks;
     [SerializeField] private Transform[] wallChecks;
-
+    [SerializeField] private Transform player;
 
     private Animator animator;
     private CharacterController characterController;
@@ -34,7 +33,7 @@ public class HeroCharacterController : MonoBehaviour
     private float jumpTimer;
     private float jumpGracePeriod = 10.0f;
 
-    private Transform player;
+
 
 
     private float coyoteTimeCounter;
@@ -42,16 +41,23 @@ public class HeroCharacterController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        Debug.Log("Start Player");
         characterController = GetComponent<CharacterController>();
         // get animator from child
         animator = GetComponentInChildren<Animator>();
         //get player by tag
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        // player = GameObject.FindGameObjectWithTag("Player").transform;
+        // Debug.Log("Player found");
         AssignAnimationIDs();
     }
 
     // Update is called once per frame
     void Update()
+    {
+        Debug.Log("update Player");
+        Move();
+    }
+    void Move()
     {
         horizontalInput = Input.GetAxis("Horizontal");
         float horizontalMultiplier = Input.GetKey(KeyCode.LeftShift) ? runSpeed : moveSpeed;
@@ -69,23 +75,8 @@ public class HeroCharacterController : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime;
         }
 
-
-
-        var blocked = false;
-        foreach (var wallCheck in wallChecks)
-        {
-            if (Physics.CheckSphere(wallCheck.position, 0.1f, groundLayer, QueryTriggerInteraction.Ignore))
-            {
-                blocked = true;
-                break;
-            }
-        }
-
-        if (!blocked)
-        {
-            var speed = horizontalInput * horizontalMultiplier;
-            velocity.x = speed;
-        }
+        var speed = horizontalInput * horizontalMultiplier;
+        velocity.x = speed;
 
         jumpPressed = Input.GetButtonDown("Jump");
 

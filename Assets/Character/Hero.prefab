@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 9208319317458545748}
   m_Layer: 0
   m_Name: Hero
-  m_TagString: Untagged
+  m_TagString: PlayerController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -517,16 +517,15 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
-  gravity: -50
-  jumpHeight: 3.5
+  gravity: -40
+  jumpHeight: 4.5
   moveSpeed: 5
   runSpeed: 13
-  groundChecks:
-  - {fileID: 9208319317270609095}
-  - {fileID: 9208319317319310264}
+  coyoteTime: 0.2
   wallChecks:
   - {fileID: 9208319317362578627}
   - {fileID: 9208319318689846103}
+  player: {fileID: 7220173636762414277}
 --- !u!95 &9208319317458545748
 Animator:
   serializedVersion: 4
@@ -707,11 +706,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hero
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c08e354cd9da32c479fa453158afe5bd, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: c08e354cd9da32c479fa453158afe5bd, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: c08e354cd9da32c479fa453158afe5bd, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: c08e354cd9da32c479fa453158afe5bd, type: 3}
 --- !u!4 &7220173636762414277 stripped

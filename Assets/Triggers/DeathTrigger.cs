@@ -6,6 +6,10 @@ public class DeathTrigger : MonoBehaviour
 {
     void OnTriggerEnter()
     {
-        Debug.Log("You died!");
+        Debug.Log("Player died");
+        GameObject player = GameObject.FindGameObjectWithTag("PlayerController");
+        Destroy(player);
+        LevelManager.instance.Respawn();
     }
+
 }
