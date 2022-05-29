@@ -5,10 +5,11 @@ using UnityEngine;
 public class HeroCharacterController : MonoBehaviour
 {
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private float gravity = -50f;
-    [SerializeField] private float jumpHeight = 3.5f;
+    [SerializeField] private float gravity = -40f;
+    [SerializeField] private float jumpHeight = 4.5f;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float runSpeed = 13f;
+    [SerializeField] private float coyoteTime = 0.2f;
     [SerializeField] private Transform[] groundChecks;
     [SerializeField] private Transform[] wallChecks;
 
@@ -33,12 +34,19 @@ public class HeroCharacterController : MonoBehaviour
     private float jumpTimer;
     private float jumpGracePeriod = 10.0f;
 
+    private Transform player;
+
+
+    private float coyoteTimeCounter;
+
     // Start is called before the first frame update
     void Awake()
     {
         characterController = GetComponent<CharacterController>();
         // get animator from child
         animator = GetComponentInChildren<Animator>();
+        //get player by tag
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         AssignAnimationIDs();
     }
 
@@ -53,10 +61,12 @@ public class HeroCharacterController : MonoBehaviour
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = 0;
+            coyoteTimeCounter = coyoteTime;
         }
         else
         {
             velocity.y += gravity * Time.deltaTime;
+            coyoteTimeCounter -= Time.deltaTime;
         }
 
 
@@ -75,10 +85,14 @@ public class HeroCharacterController : MonoBehaviour
         {
             var speed = horizontalInput * horizontalMultiplier;
             velocity.x = speed;
-            // characterController.Move();
         }
 
         jumpPressed = Input.GetButtonDown("Jump");
+
+        if (Input.GetButtonUp("Jump") && velocity.y > 0f)
+        {
+            coyoteTimeCounter = 0f;
+        }
 
         if (jumpPressed)
         {
@@ -86,15 +100,17 @@ public class HeroCharacterController : MonoBehaviour
 
         }
 
-        if (isGrounded && (jumpPressed || (jumpTimer > 0 && Time.time < jumpGracePeriod)))
+        if (coyoteTimeCounter > 0f && (jumpPressed || (jumpTimer > 0f && Time.time < jumpGracePeriod)))
         {
             velocity.y += Mathf.Sqrt(jumpHeight * -2f * gravity);
             jumpTimer = -1;
         }
 
+        float rotation = horizontalInput < 0 ? 270 : 90;
+        player.rotation = Quaternion.Euler(0, rotation, 0);
 
         characterController.Move(velocity * Time.deltaTime);
-        animator.SetFloat(speedHash, velocity.x);
+        animator.SetFloat(speedHash, Mathf.Abs(velocity.x));
         animator.SetFloat(verticalSpeedHash, velocity.y);
         setGrounded(isGrounded);
     }
