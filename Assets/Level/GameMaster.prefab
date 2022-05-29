@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8027325850818668420}
   - component: {fileID: 6782632991497455228}
   - component: {fileID: 8079781270191196490}
-  - component: {fileID: 263703662399066224}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -49,26 +48,15 @@ MonoBehaviour:
   panelComplete: {fileID: 0}
   playerPrefab: {fileID: 9208319317458545736, guid: 217ead8e1b8e4304ba04eb20f00398a0, type: 3}
   soulPrefab: {fileID: 9208319317458545736, guid: cae8c57e36f99a04aa7cb96f5e4a7e42, type: 3}
+  skyBoxPrefab: {fileID: 0}
+  skyBoxNormal: {fileID: 2100000, guid: 8c261ff10e73bc849aa4444879e0d8ee, type: 2}
+  skyBoxSoul: {fileID: 2100000, guid: c4563d34f3f169c49a3ac13010eba2a1, type: 2}
+  sun: {fileID: 0}
   respawnPoint: {fileID: 0}
   cinemachineVirtualCamera: {fileID: 0}
   text: {fileID: 0}
   deathCount: 0
 --- !u!114 &8079781270191196490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4658557339101631191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a099f25efda27d145a8b0f540941c391, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panelArchivement: {fileID: 0}
-  title: {fileID: 0}
-  description: {fileID: 0}
---- !u!114 &263703662399066224
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

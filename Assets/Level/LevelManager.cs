@@ -11,10 +11,15 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private CanvasGroup panelComplete;
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject soulPrefab;
+    [SerializeField] private GameObject skyBoxPrefab;
+    [SerializeField] private Material skyBoxNormal;
+    [SerializeField] private Material skyBoxSoul;
+
+    [SerializeField] private Light sun;
+
     [SerializeField] private Transform respawnPoint;
 
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
-
     [SerializeField] private TextMeshProUGUI text;
 
     public int deathCount = 0;
@@ -43,27 +48,29 @@ public class LevelManager : MonoBehaviour
     public void StartGame()
     {
         deathCount = 0;
-        spawn(playerPrefab);
+        spawn(playerPrefab, skyBoxNormal, new Color(1, 0.957f, 0.839f, 1));
     }
 
     // Update is called once per frame
     public void Respawn()
     {
         Debug.Log("Respawn");
-        spawn(playerPrefab);
+        spawn(playerPrefab, skyBoxNormal, new Color(1, 0.957f, 0.839f, 1));
         AddDeathCount();
     }
 
     public void RespawnSoul()
     {
         Debug.Log("Respawn Soul");
-        spawn(soulPrefab);
+        spawn(soulPrefab, skyBoxSoul, new Color(1, 0.345f, 0.337f, 1));
         AddDeathCount();
     }
 
-    private void spawn(GameObject prefab)
+    private void spawn(GameObject prefab, Material sky, Color sunColor)
     {
         var player = Instantiate(prefab, respawnPoint.position, Quaternion.identity);
+        sun.color = sunColor;
+        skyBoxPrefab.GetComponent<Renderer>().material = sky;
         player.tag = "PlayerController";
         cinemachineVirtualCamera.Follow = player.transform;
         player.SetActive(true);
