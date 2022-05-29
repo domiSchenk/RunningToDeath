@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleBehaviour : StateMachineBehaviour
+public class BoredBehaviour : StateMachineBehaviour
 {
     [SerializeField] private float timeUntilBored;
     [SerializeField] private int numberOfBoredAnimations;

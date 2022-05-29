@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class HeroCharacterController : MonoBehaviour
@@ -13,6 +15,7 @@ public class HeroCharacterController : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Animator animator;
     [SerializeField] private CharacterController characterController;
+
     private Vector3 velocity;
 
 
@@ -20,21 +23,18 @@ public class HeroCharacterController : MonoBehaviour
     private bool isJumping;
 
 
-    private float horizontalInput;
-
     private int speedHash;
     private int verticalSpeedHash;
     private int jumpHash;
     private int groundedHash;
 
+
+    private float horizontalInput;
     private bool jumpPressed;
     private float jumpTimer;
     private float jumpGracePeriod = 10.0f;
-
-
-
-
     private float coyoteTimeCounter;
+    bool leftControl = false;
 
     // Start is called before the first frame update
     void Awake()
@@ -46,6 +46,21 @@ public class HeroCharacterController : MonoBehaviour
     void Update()
     {
         Move();
+        checkHarakiri();
+    }
+
+    private void checkHarakiri()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+            leftControl = true;
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+            leftControl = false;
+
+        if (leftControl && Input.GetKeyUp(KeyCode.H))
+        {
+            ArchievementManager.instance.ShowArchivement(ArchievementManager.Archievements.HarakiriGoal);
+            LevelManager.instance.Respawn();
+        }
     }
     void Move()
     {
