@@ -49,8 +49,7 @@ public class LevelManager : MonoBehaviour
     public void StartGame()
     {
         deathCount = 0;
-        // spawn(playerPrefab, skyBoxNormal, new Color(1, 0.957f, 0.839f, 1));
-        RespawnSoul();
+        spawn(playerPrefab, skyBoxNormal, new Color(1, 0.957f, 0.839f, 1));
     }
 
     // Update is called once per frame
