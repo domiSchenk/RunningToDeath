@@ -530,7 +530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: -10
-  jumpHeight: 2
+  jumpHeight: 8
   moveSpeed: 3
   runSpeed: 8
   coyoteTime: 1

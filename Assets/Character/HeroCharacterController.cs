@@ -65,7 +65,7 @@ public class HeroCharacterController : MonoBehaviour
     void Move()
     {
         horizontalInput = Input.GetAxis("Horizontal");
-        float horizontalMultiplier = Input.GetKey(KeyCode.LeftShift) ? moveSpeed : runSpeed;
+        float horizontalMultiplier = runSpeed; //Input.GetKey(KeyCode.LeftShift) ? moveSpeed : runSpeed;
 
         isGrounded = characterController.isGrounded;
 
