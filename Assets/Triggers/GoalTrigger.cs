@@ -10,6 +10,7 @@ public class GoalTrigger : MonoBehaviour
     void OnTriggerEnter()
     {
         ArchievementManager.instance.ShowArchivement(archivement);
+        Destroy(gameObject);
     }
 
 }

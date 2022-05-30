@@ -495,7 +495,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8929304702380596092}
-  - {fileID: 7220173636762414277}
+  - {fileID: 8363793898003328846}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -529,15 +529,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ed5b4914d9cb844bc2be0e95c19f02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 128
   gravity: -10
-  jumpHeight: 2.5
+  jumpHeight: 2
   moveSpeed: 3
   runSpeed: 8
   coyoteTime: 1
-  player: {fileID: 7220173636762414277}
+  player: {fileID: 8363793898003328846}
   animator: {fileID: 9208319317458545748}
   characterController: {fileID: 9208319317458545738}
 --- !u!95 &9208319317458545748
@@ -550,7 +547,7 @@ Animator:
   m_GameObject: {fileID: 9208319317458545736}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c08e354cd9da32c479fa453158afe5bd, type: 3}
-  m_Controller: {fileID: 9100000, guid: ed9634143e4731f4a9e36dbcddb094d1, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2f3e4761142057441a41e989a2008937, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -560,7 +557,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1001 &7185929532763818798
+--- !u!1001 &8329569421822265509
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -594,7 +591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c08e354cd9da32c479fa453158afe5bd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c08e354cd9da32c479fa453158afe5bd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -626,31 +623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c08e354cd9da32c479fa453158afe5bd, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -6785016537607054908, guid: c08e354cd9da32c479fa453158afe5bd, type: 3}
-      propertyPath: m_LocalScale.x
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -6785016537607054908, guid: c08e354cd9da32c479fa453158afe5bd, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -6785016537607054908, guid: c08e354cd9da32c479fa453158afe5bd, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -6785016537607054908, guid: c08e354cd9da32c479fa453158afe5bd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -6785016537607054908, guid: c08e354cd9da32c479fa453158afe5bd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -6785016537607054908, guid: c08e354cd9da32c479fa453158afe5bd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c08e354cd9da32c479fa453158afe5bd, type: 3}
       propertyPath: m_Name
@@ -660,16 +633,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5866666021909216657, guid: c08e354cd9da32c479fa453158afe5bd, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 7219867370428330978, guid: c08e354cd9da32c479fa453158afe5bd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 66112499392c9d64da23f7c0184142d2, type: 2}
     m_RemovedComponents:
     - {fileID: 5866666021909216657, guid: c08e354cd9da32c479fa453158afe5bd, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: c08e354cd9da32c479fa453158afe5bd, type: 3}
---- !u!4 &7220173636762414277 stripped
+--- !u!4 &8363793898003328846 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c08e354cd9da32c479fa453158afe5bd, type: 3}
-  m_PrefabInstance: {fileID: 7185929532763818798}
+  m_PrefabInstance: {fileID: 8329569421822265509}
   m_PrefabAsset: {fileID: 0}
