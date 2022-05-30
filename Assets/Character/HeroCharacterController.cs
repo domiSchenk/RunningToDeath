@@ -65,7 +65,7 @@ public class HeroCharacterController : MonoBehaviour
     void Move()
     {
         horizontalInput = Input.GetAxis("Horizontal");
-        float horizontalMultiplier = runSpeed;
+        float horizontalMultiplier = Input.GetKey(KeyCode.LeftShift) ? moveSpeed : runSpeed;
 
         isGrounded = characterController.isGrounded;
 
@@ -104,6 +104,7 @@ public class HeroCharacterController : MonoBehaviour
 
         float rotation = horizontalInput < 0 ? 270 : 90;
         player.rotation = Quaternion.Euler(0, rotation, 0);
+        velocity.z = 0;
 
         characterController.Move(velocity * Time.deltaTime);
         animator.SetFloat(speedHash, Mathf.Abs(velocity.x));
