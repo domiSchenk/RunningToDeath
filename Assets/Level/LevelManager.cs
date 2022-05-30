@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject soulPrefab;
     [SerializeField] private GameObject skyBoxPrefab;
+    [SerializeField] private GameObject taintedEnv;
     [SerializeField] private Material skyBoxNormal;
     [SerializeField] private Material skyBoxSoul;
 
@@ -55,6 +56,7 @@ public class LevelManager : MonoBehaviour
     public void Respawn()
     {
         Debug.Log("Respawn");
+        taintedEnv.SetActive(false);
         spawn(playerPrefab, skyBoxNormal, new Color(1, 0.957f, 0.839f, 1));
         AddDeathCount();
     }
@@ -62,6 +64,7 @@ public class LevelManager : MonoBehaviour
     public void RespawnSoul()
     {
         Debug.Log("Respawn Soul");
+        taintedEnv.SetActive(true);
         spawn(soulPrefab, skyBoxSoul, new Color(1, 0.345f, 0.337f, 1));
         AddDeathCount();
     }

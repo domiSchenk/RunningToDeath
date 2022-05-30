@@ -112,6 +112,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Pillar.005
+    second: {fileID: 2100000, guid: 1c9b38627f4365b47bddbaea9bc26dbd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pillar.REd
+    second: {fileID: 2100000, guid: d930a05a69a7ee046ac8aa93918bccce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Plank.001
     second: {fileID: 2100000, guid: 272ffa83542681340945e18da86ae61f, type: 2}
   - first:

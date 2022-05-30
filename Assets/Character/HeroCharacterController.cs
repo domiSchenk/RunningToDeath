@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class HeroCharacterController : MonoBehaviour
 {
-    [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float gravity = -40f;
     [SerializeField] private float jumpHeight = 4.5f;
     [SerializeField] private float moveSpeed = 5f;
@@ -59,13 +58,14 @@ public class HeroCharacterController : MonoBehaviour
         if (leftControl && Input.GetKeyUp(KeyCode.H))
         {
             ArchievementManager.instance.ShowArchivement(ArchievementManager.Archievements.HarakiriGoal);
+            Destroy(this.gameObject);
             LevelManager.instance.Respawn();
         }
     }
     void Move()
     {
         horizontalInput = Input.GetAxis("Horizontal");
-        float horizontalMultiplier = Input.GetKey(KeyCode.LeftShift) ? runSpeed : moveSpeed;
+        float horizontalMultiplier = runSpeed;
 
         isGrounded = characterController.isGrounded;
 
