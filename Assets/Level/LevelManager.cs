@@ -21,9 +21,11 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Transform respawnPoint;
 
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
-    [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private TextMeshProUGUI labelDeathCounter;
+    [SerializeField] private TextMeshProUGUI labelAchievementCounter;
 
-    public int deathCount = 0;
+    [SerializeField] public int deathCount = 0;
+    [SerializeField] public int achievementCount = 0;
     private bool showPanelComplete = false;
 
     // Start is called before the first frame update
@@ -49,6 +51,7 @@ public class LevelManager : MonoBehaviour
     public void StartGame()
     {
         deathCount = 0;
+        achievementCount = 0;
         spawn(playerPrefab, skyBoxNormal, new Color(1, 0.957f, 0.839f, 1));
     }
 
@@ -66,7 +69,7 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Respawn Soul");
         taintedEnv.SetActive(true);
         spawn(soulPrefab, skyBoxSoul, new Color(1, 0.345f, 0.337f, 1));
-        AddDeathCount();
+        // AddDeathCount();
     }
 
     private void spawn(GameObject prefab, Material sky, Color sunColor)
@@ -82,7 +85,13 @@ public class LevelManager : MonoBehaviour
     public void AddDeathCount()
     {
         deathCount++;
-        text.text = deathCount.ToString();
+        labelDeathCounter.text = deathCount.ToString();
+    }
+
+    public void AddAchievementCount()
+    {
+        achievementCount++;
+        labelAchievementCounter.text = achievementCount.ToString();
     }
 
     public void GameDone()

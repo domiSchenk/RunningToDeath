@@ -22,11 +22,11 @@ public class ArchievementManager : MonoBehaviour
         All = 5
 
     }
-    public Archievement DefaultGoal { get; set; } = new Archievement(Archievements.DefaultGoal, "Standard Goal", "You have reached the standard goal");
-    public Archievement SoulGoal { get; set; } = new Archievement(Archievements.SoulGoal, "Soul Goal", "You have reached the soul goal");
-    public Archievement HiddenGoal { get; set; } = new Archievement(Archievements.HiddenGoal, "Hidden Goal", "You have reached the hidden goal");
-    public Archievement HarakiriGoal { get; set; } = new Archievement(Archievements.HarakiriGoal, "Harakiri Goal", "You have reached the harakiri goal");
-    public Archievement AllGoal { get; set; } = new Archievement(Archievements.All, "All Goals", "Congratulations, You have reached all goals!");
+    public Archievement DefaultGoal { get; set; } = new Archievement(Archievements.DefaultGoal, "Standard Achievement", "You have reached the standard achievement");
+    public Archievement SoulGoal { get; set; } = new Archievement(Archievements.SoulGoal, "Soul Achievement", "You have reached the soul achievement");
+    public Archievement HiddenGoal { get; set; } = new Archievement(Archievements.HiddenGoal, "Hidden Achievement", "You have reached the hidden achievement");
+    public Archievement HarakiriGoal { get; set; } = new Archievement(Archievements.HarakiriGoal, "Harakiri Achievement", "You have reached the harakiri achievement");
+    public Archievement AllGoal { get; set; } = new Archievement(Archievements.All, "All Achievements", "Congratulations, You have reached all goals!");
 
     private void Awake()
     {
@@ -150,6 +150,7 @@ public class Archievement
 
     public void Complete()
     {
+        LevelManager.instance.AddAchievementCount();
         IsCompleted = true;
     }
 

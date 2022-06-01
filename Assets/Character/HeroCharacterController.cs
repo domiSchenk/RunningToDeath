@@ -50,9 +50,9 @@ public class HeroCharacterController : MonoBehaviour
 
     private void checkHarakiri()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.LeftShift))
             leftControl = true;
-        if (Input.GetKeyUp(KeyCode.LeftControl))
+        if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.LeftShift))
             leftControl = false;
 
         if (leftControl && Input.GetKeyUp(KeyCode.H))
@@ -83,9 +83,9 @@ public class HeroCharacterController : MonoBehaviour
         var speed = horizontalInput * horizontalMultiplier;
         velocity.x = speed;
 
-        jumpPressed = Input.GetButtonDown("Jump");
+        jumpPressed = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow);
 
-        if (Input.GetButtonUp("Jump") && velocity.y > 0f)
+        if ((Input.GetButtonUp("Jump") || Input.GetKeyUp(KeyCode.UpArrow)) && velocity.y > 0f)
         {
             coyoteTimeCounter = 0f;
         }
